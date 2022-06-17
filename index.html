@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <script src="./js/jquery.js"></script>
+  
+</head>
+
+<body>
+    <div id="books">
+        <header class="header">
+            <div class="container">
+                <div class="title">
+                    <a href="./index.html">
+                        <h1>三味书屋</h1>
+                    </a>
+                </div>
+                <div class="search">
+                    <div class="inp">
+                        <div class="sousuo">
+                            <input type="search" placeholder="请输入书名" id="inp">
+                        </div>
+                        <div class="iconbox">
+                            <div class="iconfont icon-sousuo_o icon"></div>
+                        </div>
+                        <div id="tishi">
+                               
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="caozuo">
+                    <span class="group">
+                        <i class="iconfont icon-shuji"></i>
+                        <span id="booksanimation">书籍管理</span>
+                    </span>
+                    <span class="rank">
+                        <i class="iconfont icon-paixingbang"></i>
+                        <span class="paihang">排行榜</span>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 轮播图 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                
+            </div>
+            <!-- 如果需要导航按钮 -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination"></div>
+          
+        </div>
+
+        <h2>排行榜</h2>
+        <div class="booksbox">
+            <ul>
+                <li>
+                    <!-- <img src="./img/1.jpg" alt=""> -->
+                </li>
+                <li>
+                    <!-- <img src="./img/2.jpg" alt=""> -->
+                </li>
+                <li>
+                    <!-- <img src="./img/3.jpg" alt=""> -->
+                </li>
+                <li>
+                    <!-- <img src="./img/4.jpg" alt=""> -->
+                </li>
+                <li>
+                    <!-- <img src="./img/5.jpg" alt=""> -->
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p>© 2022 三味书屋 隐私政策 京ICP证080268号 京ICP备10005211号</p>
+        </div>
+       
+    </div>
+
+
+</body>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="./js/axios.min.js"></script>
+<script src="./js/index.js"></script>
+
+
+</html>
