@@ -101,7 +101,7 @@ function search(data) {
         $('#tishi').text(d[key].name + '作者：' + d[key].author)
       }
       $('tishi').on('click', function () {
-        <a href=''></a>
+        // <a href=''></a>
       }
       )
     })
