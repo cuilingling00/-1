@@ -6,16 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/common.css">
-    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./table.css/table.css">
     <link rel="stylesheet" href="./iconfont/iconfont.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-    <script src="./js/jquery.js"></script>
-  
+    <link rel="stylesheet" href="./layui-v2.6.13/layui/css/layui.css">
+    <link rel="stylesheet" href="./table.css/icon/iconfont.css">
+    <script src="./table.js/jquery.js"></script>
+    <script src="./layui-v2.6.13/layui/layui.js"></script>
+    <script src="./table.js/axios.min.js"></script>
 </head>
 
 <body>
-    <div id="books">
+    <div id="tab">
         <header class="header">
             <div class="container">
                 <div class="title">
@@ -33,9 +34,11 @@
                         </div>
                         <a href="">
                             <div id="tishi">
+
                             </div>
                         </a>
-                       
+
+
                     </div>
 
                 </div>
@@ -51,51 +54,38 @@
                 </div>
             </div>
         </header>
-
-        <!-- 轮播图 -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                
-            </div>
-            <!-- 如果需要导航按钮 -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
-          
+        <button id="add">新增</button>
+        <button id="export">导出
+        </button>
+        <div class="layui-card">
+            <table id="test" lay-filter="test"></table>
         </div>
 
-        <h2>排行榜</h2>
-        <div class="booksbox">
-            <ul>
-                <li>
-                    <!-- <img src="./img/1.jpg" alt=""> -->
-                </li>
-                <li>
-                    <!-- <img src="./img/2.jpg" alt=""> -->
-                </li>
-                <li>
-                    <!-- <img src="./img/3.jpg" alt=""> -->
-                </li>
-                <li>
-                    <!-- <img src="./img/4.jpg" alt=""> -->
-                </li>
-                <li>
-                    <!-- <img src="./img/5.jpg" alt=""> -->
-                </li>
-            </ul>
-        </div>
-        <div class="footer">
+        <!-- <div class="footer">
             <p>© 2022 三味书屋 隐私政策 京ICP证080268号 京ICP备10005211号</p>
-        </div>
-       
-    </div>
-
-
+        </div> -->
 </body>
-<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-<script src="./js/axios.min.js"></script>
-<script src="./js/index.js"></script>
+<script src="./table.js/table.js"></script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <textarea class="layui-layer-input ">
+     
+    </textarea>
+  
+     
+    
 
+
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+</script>
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+      <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+      <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+      <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+  </script>
 
 </html>
