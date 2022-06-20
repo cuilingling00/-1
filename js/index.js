@@ -98,15 +98,13 @@ function search() {
           console.log(data);
           $('#tishi').text(data.data.data[0].name + '作者：' + data.data.data[0].author)
           $('.inp a').attr('href',`./detail/detail.html?id=${data.data.data[0].id}`)
-
-
         })
       }
       mohu($('#inp').val())
      
     })
 
-  
+
 }
 search()
 $('#booksanimation').click('on',function(){

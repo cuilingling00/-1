@@ -9,13 +9,9 @@
             for (let item in guanlidata.data) {
                 console.log(item);
                 console.log(guanlidata.data[item]);
-                $('.layui-layer-input').html(
-                    `*书名：<input type="text" class="in">.val(${guanlidata.data[item].name})
-                    *封面图：<input type="text" class="in">.val(${guanlidata.data[item].coverImg})
-                    *作者：<input type="text" class="in">.val(${guanlidata.data[item].author})
-                    评分：
-                    *简介：<input type="text" class="in">.val(${guanlidata.data[item].desc})`
-                )
+                console.log($('.layui-layer-input'));
+
+
                 // let res=`<tr>
                 //     <td>${guanlidata.data[item].name}</td>
                 //     <td><img src="${guanlidata.data[item].coverImg}" alt=""></td>
@@ -35,7 +31,7 @@
                 table.render({ // height: 315,
                     elem: '#test',
                     // height:512,
- 
+
                     toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
                     ,
                     defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
@@ -52,7 +48,7 @@
                             field: 'name',
                             title: '书名',
                             width: 150,
-                       
+
                             fixed: 'left',
                             unresize: true,
                             sort: true
@@ -147,21 +143,36 @@
                         });
 
                     } else if (obj.event === 'edit') {
-                     
-                        layer.prompt({
-                            formType: 2,
-                            value: data.author,
-                            name: data.author,
-
-                        }, function (value, index) {
-                            obj.update({
-                             
-                                author: value,
-                                name: value,
-                            });
-                            console.log(value);
-                            layer.close(index);
-                        });
+                        let content = `<div class="add">
+             <form action="">
+            <div class="form-group">
+            <label for="booksname">
+                *书名：<input type="text" placeholder="请输入书名" id="booksname" value=${data.name}>
+            </label>
+            <div>
+            <div class="form-group">
+            <label for="booksimage">
+                *封面图：<input type="text" placeholder="请输入封面图" id="booksimage" value=${data.coverImg}>
+            </label>
+            </div>
+            <div class="form-group">
+            <label for="booksauthor">
+                *作者：<input type="text" placeholder="请输入作者" id="booksauthor" value=${data.author}>
+            </label>
+            </div>
+            <div class="form-group">
+            <label for="rank">
+                评分：<input type="text" placeholder="请输入评分" id="rank" value=${data.rate}>
+            </label>
+            </div>
+            <div class="form-group">
+            <label for="booksdesc">
+                *简介：<input type="text" placeholder="请输入简介" id="booksdesc" value=${data.desc}>
+            </label>
+            </div>
+        </form>
+        </div>`
+        layer.alert(content)
                     } else if (obj.event === 'detail') {
                         // window.location = "./bookContent.html";
                         window.location.assign('http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=' + data.id);
@@ -180,7 +191,7 @@
     } catch (error) {
         console.log(error);
     }
-  
+
 })()
 
 
