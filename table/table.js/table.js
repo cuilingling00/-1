@@ -6,24 +6,11 @@
 
         function guanliBook() {
             console.log(guanlidata.data);
+
             for (let item in guanlidata.data) {
                 console.log(item);
                 console.log(guanlidata.data[item]);
-                console.log($('.layui-layer-input'));
 
-
-                // let res=`<tr>
-                //     <td>${guanlidata.data[item].name}</td>
-                //     <td><img src="${guanlidata.data[item].coverImg}" alt=""></td>
-                //     <td>${guanlidata.data[item].author}</td>
-                //     <td>${guanlidata.data[item].desc}</td>
-                //     <td>${guanlidata.data[item].id}</td>
-                //     <td><i class="iconfont icon-xiangqing">详情</i>
-                //     <i class="iconfont icon-bianji">编辑</i>
-                //     <i class="iconfont icon-shanchu_o">删除</i>
-                //     </td>
-                //     </tr>`
-                //  $('table').append($(res))
             }
 
             layui.use('table', function () {
@@ -143,36 +130,90 @@
                         });
 
                     } else if (obj.event === 'edit') {
-                        let content = `<div class="add">
-             <form action="">
-            <div class="form-group">
-            <label for="booksname">
-                *书名：<input type="text" placeholder="请输入书名" id="booksname" value=${data.name}>
-            </label>
-            <div>
-            <div class="form-group">
-            <label for="booksimage">
-                *封面图：<input type="text" placeholder="请输入封面图" id="booksimage" value=${data.coverImg}>
-            </label>
-            </div>
-            <div class="form-group">
-            <label for="booksauthor">
-                *作者：<input type="text" placeholder="请输入作者" id="booksauthor" value=${data.author}>
-            </label>
-            </div>
-            <div class="form-group">
-            <label for="rank">
-                评分：<input type="text" placeholder="请输入评分" id="rank" value=${data.rate}>
-            </label>
-            </div>
-            <div class="form-group">
-            <label for="booksdesc">
-                *简介：<input type="text" placeholder="请输入简介" id="booksdesc" value=${data.desc}>
-            </label>
-            </div>
-        </form>
-        </div>`
-        layer.alert(content)
+                        //                 let content = `<div class="add">
+                        //      <form action="">
+                        //     <div class="form-group">
+                        //     <label for="booksname">
+                        //         *书名：<input type="text" placeholder="请输入书名" id="booksname" value=${data.name}>
+                        //     </label>
+                        //     <div>
+                        //     <div class="form-group">
+                        //     <label for="booksimage">
+                        //         *封面图：<input type="text" placeholder="请输入封面图" id="booksimage" value=${data.coverImg}>
+                        //     </label>
+                        //     </div>
+                        //     <div class="form-group">
+                        //     <label for="booksauthor">
+                        //         *作者：<input type="text" placeholder="请输入作者" id="booksauthor" value=${data.author}>
+                        //     </label>
+                        //     </div>
+                        //     <div class="form-group">
+                        //     <label for="rank">
+                        //         评分：<input type="text" placeholder="请输入评分" id="rank" value=${data.rate}>
+                        //     </label>
+                        //     </div>
+                        //     <div class="form-group">
+                        //     <label for="booksdesc">
+                        //         *简介：<textarea  class ="jianjie" placeholder="请输入简介" id="booksdesc">
+                        //     </label>
+                        //     </div>
+                        // </form>
+                        // </div>
+                        // `
+                        layer.open({
+                            title: '编辑',
+                            area: ['800px', '350px']
+                            , content:
+                                `<form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">*书名</label>
+                        <div class="col-sm-10">
+                            <input type='text' class="form-control" id="inputEmail3" placeholder="请输入书名"  value=${data.name}>
+    
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">*封面图</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入封面图" value=${data.coverImg}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">*作者</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputPassword3" placeholder="请输入作者" value=${data.author}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">*评分</label>
+                    <div class="col-sm-10">
+                        <div id="cont"></div> ${data.rate}分
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">*简介</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="3" text=${data.desc}></textarea>
+                        </div>
+                    </div>
+                    
+                </form>`,
+                            btn: ['取消', '确定']
+                        })
+                        layui.use('rate', function () {
+                            var rate = layui.rate;
+                            console.log(rate);
+                            //渲染
+                            var ins1 = rate.render({
+                                elem: '#cont',//绑定元素
+                                length: 10,
+                                value: data.rate,
+                                half: true,
+                            });
+                        });
+                        $('textarea').text(data.desc)
+
+
                     } else if (obj.event === 'detail') {
                         // window.location = "./bookContent.html";
                         window.location.assign('http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=' + data.id);
@@ -193,5 +234,89 @@
     }
 
 })()
+console.log($('#add'));
+$('#add').click('on', function () {
+    layer.open({
+        title: '新增',
+        area: ['800px', '350px']
+        , content:
+            `<form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">*书名</label>
+                    <div class="col-sm-10">
+                        <input type='text' class="form-control" id="inputEmail3" placeholder="请输入书名">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">*封面图</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="请输入封面图">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">*作者</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="请输入作者">
+                    </div>
+                </div>
+                <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">*评分</label>
+                <div class="col-sm-10">
+                    <div id="con"></div>
+                </div>
+            </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">*简介</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+            </form>`,
+        btn: ['取消', '确定'],
+
+    })
+    layui.use('rate', function () {
+        var rate = layui.rate;
+        console.log(rate);
+        //渲染
+        var ins1 = rate.render({
+            elem: '#con',//绑定元素
+            length: 10,
+            value: 0,
+            half: true,
+        });
+    });
+
+
+
+})
+$('.layui-layer-btn1').click('on', function () {
+    function add2() {
+        async function add1(a, b, c, d, e) {
+            try {
+                let re = await axios({
+                    method: 'post',
+                    url: 'http://localhost:3005/books',
+                    data: {
+                        name: $('#inputEmail3').val(),
+                        coverImg: $('#el-id-1185-18').val(),
+                        author: $('#inputPassword3').val(),
+                        // rate: ${}.val()
+                desc: $('#inputPassword3').val(),
+          }
+          }).then(data => {
+                            console.log(data);
+                        })
+    }catch (error) {
+    console.log(error);
+}
+}
+add1($('#inputEmail3').val(), $('#el-id-1185-18').val(), $('#inputPassword3').val(), $('#inputPassword3').val())
+}
+add2()
+
+})
+
 
 

@@ -62,17 +62,16 @@ body {
 
 .sousuo {
     flex: 8;
+    /* display: none; */
 }
 
-input {
-
-    padding: 0;
-    outline: 0;
-    border: none;
+.sousuo input {
+    outline: 0; 
+     border: none; 
     background: 0 0;
     box-sizing: border-box;
-    width: 80%;
-}
+   
+} 
 
 .iconbox {
     width: 20%;
@@ -196,22 +195,35 @@ p {
     border-color: none;
 }
 
-/* #export::before {
-    content: '';
 
-} */
-.layui-layer-input{
-    display: none;
-}
-input{
+
+/* input{
     width:300px;
     height: 50px;
+} */
+.form-group input{
+   font-weight: 400;
+   width: 600px;
+   height:40px;
+   border-radius: 5px;
+
 }
-.form-group{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+.form-group label{
+    font-weight: 400;
+}
+.buttongroup #btn1{
+    width:50px;
+    height:30px;
+    background-color: #fff;
+    color:#999;
+    text-align: center;
+    line-height: 30px;
+}
+.buttongroup #btn2{
+    width:50px;
+    height:30px;
+    background-color: skyblue;
+    color:#fff;
+    text-align: center;
+    line-height: 30px;
 }
