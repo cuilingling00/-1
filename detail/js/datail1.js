@@ -8,6 +8,8 @@ let params = location.search.substr(1)
 console.log(params);
 var arr = params.split('=')
 console.log(arr[1]);
+// 渲染详情页面的数据
+
 async function detail() {
   let rr = await axios({
     method: 'get',
@@ -20,7 +22,7 @@ async function detail() {
     $('.left').html(
       `<img src="${data.data.data[0].coverImg}" alt="">`
     )
-
+    $('#inp').val(data.data.data[0].name)
     let name = data.data.data[0].name
     $('#shuming').append(name)
     let author = data.data.data[0].author
@@ -46,10 +48,11 @@ async function detail() {
     pf(pingfen)
     $('#pingfen').append(pingfen)
 
-
   })
 }
+
 detail()
+
 
 // 点击书籍input 框显示书名
 function show() {
@@ -90,9 +93,12 @@ function search() {
       }).then(data => {
         console.log(data);
         $('#tishi').text(data.data.data[0].name + '作者：' + data.data.data[0].author)
+        console.log($('#tishi'));
         console.log(data);
         $('#tishi').click('on', function () {
-          window.location.href = `http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=${data.data.data[0].id}&name=${data.data.data[0].name}`
+            window.location.href=`http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?name=${data.data.data[0].name}`
+            
+  
         })
 
       })
@@ -105,4 +111,7 @@ function search() {
 search()
 $('#booksanimation').click('on', function () {
   window.location.href = 'http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/table/table.html'
+})
+$('.rank').click('on',function(){
+  window.location.href="http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/table/paihang.html"
 })

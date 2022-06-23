@@ -13,15 +13,18 @@ async function fun() {
 }
 fun()
 
-////首页轮播图
+//首页轮播图
+
 function lunbo(data) {
+  console.log(data);
+  let a = data.data.data.slice(0,15)
+  console.log(a);
   $('.swiper-wrapper').empty()
-  for (let item in data.data.data) {
-    let a = data.data.data
-    // console.log(a);
+  for (let item in a) {
+ 
     let ren = $(`
           <div class="swiper-slide">
-          <a href="./detail/detail.html?id=${data.data.data[item].id}">
+          <a href="./detail/detail.html?id=${a[item].id}">
           <img src="${a[item].coverImg}" alt="" calss="tuimg">
           </a>
           </div>
@@ -109,6 +112,9 @@ function search() {
 search()
 $('#booksanimation').click('on',function(){
    window.location.href='http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/table/table.html'
+})
+$('.rank').click('on',function(){
+  window.location.href="http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/table/paihang.html"
 })
 
 
