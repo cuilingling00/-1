@@ -180,6 +180,7 @@ input {
     background-color: #333;
     height:150px;
     overflow: hidden;
+    line-height: 150px;
 }
 p{
     text-align: center;

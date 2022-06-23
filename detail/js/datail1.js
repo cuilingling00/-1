@@ -82,6 +82,7 @@ show()
 // 搜索框搜索
 function search() {
   $('.icon').on('click', function () {
+       
     $('#tishi').css('display', 'block')
     async function mohu(val) {
       let r = await axios({
@@ -96,9 +97,9 @@ function search() {
         console.log($('#tishi'));
         console.log(data);
         $('#tishi').click('on', function () {
-            window.location.href=`http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?name=${data.data.data[0].name}`
-            
-  
+          console.log(data);
+          $('.inp a').attr('href',`http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=${data.data.data[0].id}`)
+          // window.location.assign('http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=' +data.data.data[0].id)
         })
 
       })

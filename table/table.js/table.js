@@ -281,6 +281,7 @@ function fun() {
 }
 fun()
 // let star = 0;
+// 新增书籍
 console.log($('#add'));
 $('#add').click('on', function () {
     layer.open({
@@ -612,8 +613,6 @@ $('#print').click(function () {
             });
         }
     });
-
-
 
 
 
