@@ -55,14 +55,13 @@ body {
     align-items: stretch;
     justify-content: center;
     padding: 1px 11px;
-
     border-radius: 10px;
+    height:100%;
     box-shadow: 0, 0, 0, 1px rgb(0, 0, 0, .5) inset;
 }
-
 .sousuo {
     flex: 8;
-    /* display: none; */
+  
 }
 
 .sousuo input {
@@ -247,9 +246,14 @@ p {
     position: fixed;
     right: 0;
     bottom: 30px;
-    /* display: none; */
+    display: none;
   }
   .top i {
     font-size: 40px;
     cursor: pointer;
   }
+  td .laytable-cell-2-0-2{
+    height:auto;
+    text-overflow:inherit ;
+    white-space: normal;
+ }

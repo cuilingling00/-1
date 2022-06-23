@@ -55,7 +55,7 @@ body {
     align-items: stretch;
     justify-content: center;
     padding: 1px 11px;
-     
+     height:100%;
     border-radius: 10px;
     box-shadow: 0, 0, 0, 1px rgb(0, 0, 0, .5) inset;
 }
@@ -164,7 +164,7 @@ input {
     width:400px;
     height:300px;
     float:right;
-  margin-top: 100px;
+    margin-top: -42px;
 }
 
 .right p{
@@ -192,3 +192,14 @@ img{
     width:350px;
     height:350px;
 }
+.left img{
+    margin-top: -61px;
+}
+.right p{
+    text-align: left;
+}
+/* #jianjie{
+    width:200%;
+    height:600px;
+   
+} */

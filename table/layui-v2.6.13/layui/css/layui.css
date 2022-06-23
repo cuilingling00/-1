@@ -3980,7 +3980,7 @@ body .layui-table-tips .layui-layer-content {
     max-height: 150px;
     padding: 8px 15px;
     font-size: 14px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     background-color: #fff;
     color: #5f5f5f
 }

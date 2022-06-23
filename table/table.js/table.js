@@ -14,6 +14,38 @@ function re() {
     }
     fun()
 }
+// input 框输入信息
+// 搜索框搜索
+function search() {
+    $('.icon').on('click', function () {
+
+        $('#tishi').css('display', 'block')
+        async function mohu(val) {
+            let r = await axios({
+                mathod: 'get',
+                url: 'http://localhost:3005/books',
+                params: {
+                    name_like: val
+                }
+            }).then(data => {
+                console.log(data);
+                $('#tishi').text(data.data.data[0].name + '作者：' + data.data.data[0].author)
+                console.log($('#tishi'));
+                console.log(data);
+                $('#tishi').click('on', function () {
+                    console.log(data);
+                    $('.inp a').attr('href', `http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=${data.data.data[0].id}`)
+                    // window.location.assign('http://127.0.0.1:5500/js%E4%BB%A3%E7%A0%81/code/zuoye/ES6/code/%E4%B8%89%E5%91%B3%E4%B9%A6%E5%B1%8B%E9%A1%B9%E7%9B%AE/detail/detail.html?id=' +data.data.data[0].id)
+                })
+
+            })
+        }
+        mohu($('#inp').val())
+
+    })
+
+}
+search()
 
 function fun() {
     (async function () {
@@ -402,13 +434,33 @@ async function fen() {
                         , limit: 5//每页个数
                         , limits: [5, 10, 20]
                         , layout: ['count', 'limit', 'prev', 'page', 'next']//选择每页的条数
-    
+
                         , jump: async function (obj) {
                             console.log(obj.limit, obj.curr)
-                            page = obj.curr;   
+                            page = obj.curr;
                             limit = obj.limit
                             let { data: layData } = await
                                 axios.get(`http://localhost:3005/books?_page=${page}&_limit=${limit}`)
+
+                            // 放大图片
+                            $('.layui-table-cell').on('click', 'img', function () {
+                                // console.log($(this).attr('src'));
+                                layer.open({
+                                    type: 1
+                                    , title: false //不显示标题栏
+                                    , closeBtn: false
+                                    // ,time:5000
+                                    , anim: 3
+                                    , shadeClose: true
+                                    , area: 'auto'
+                                    , shade: 0.5
+                                    , id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                                    // , btn: ['火速围观', '残忍拒绝']
+                                    , btnAlign: 'c'
+                                    , moveType: 1 //拖拽模式，0或者1
+                                    , content: `<div style="padding:10px 5px 10px 5px ; width: 300px; "><img style="width:100%" " src="${$(this).attr('src')}" alt=""></div>`
+                                });
+                            })
 
                             table.on('sort(test)', async function (obj) { //注：sort 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
                                 console.log(obj.field); //当前排序的字段名
@@ -435,10 +487,10 @@ async function fen() {
                                 });
 
                             })
-
-
+                                   
 
                             console.log(layData.data);
+                         
                             table.render({
                                 elem: '#test'
                                 , autoSort: false
@@ -459,7 +511,8 @@ async function fen() {
                                     , {
                                         //图片
                                         field: 'coverImg', title: '封面图', width: 120,
-                                        edit: 'test', templet: function (d) {
+                                           
+                                        templet: function (d) {
                                             return `<img src=" ${d.coverImg}" alt="">`
                                         }
                                     }
@@ -599,20 +652,20 @@ $('#print').click(function () {
     )
 })
 // 返回顶部按钮
-    $(window).scroll(function () {
-        if ($(document).scrollTop() < 0) {
-            $(".top").hide();
-        }
-        if ($(document).scrollTop() > $(window).height()) {
-            $(".top").show();
-            $(".top").click(function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                });
+$(window).scroll(function () {
+    if ($(document).scrollTop() < 0) {
+        $(".top").hide();
+    }
+    if ($(document).scrollTop() > $(window).height()) {
+        $(".top").show();
+        $(".top").click(function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
             });
-        }
-    });
+        });
+    }
+});
 
 
 
